@@ -1,13 +1,36 @@
-const pls = require('passport-local-sequelize')
 const sequelize = require('../db')
-const { DataTypes } = require('sequelize')
+const { Model, DataTypes } = require('sequelize')
 
-const Post = pls.definePost(sequelize, {
-  postId: DataTypes.STRING,
-  title: DataTypes.STRING,
-  description: DataTypes.STRING,
-  time: DataTypes.DATE
-})
+class Post extends Model { }
+
+Post.init(
+  {
+  postId: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  } ,
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false  
+  },
+  description: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  time: {
+    type: DataTypes.DATE,
+    allowNull: false
+  }
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName:true,
+    underscored: true,
+    modelName:'post'
+  }
+)
 
 module.exports = Post
 
