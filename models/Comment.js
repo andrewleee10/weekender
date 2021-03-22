@@ -26,8 +26,8 @@ Comment.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'category'
+    modelName: 'comments'
   }
 )
 
-module.exports = Category
+module.exports = Comment

@@ -5,11 +5,11 @@ class Post extends Model { }
 
 Post.init(
   {
-  postId: {
+  id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true
-  } ,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false  
@@ -21,6 +21,9 @@ Post.init(
   time: {
     type: DataTypes.DATE,
     allowNull: false
+  },
+  comment_id: {
+    type: DataTypes.INTEGER
   }
   },
   {
