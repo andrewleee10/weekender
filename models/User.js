@@ -4,7 +4,8 @@ const sequelize = require('../db')
 
 const User = pls.defineUser(sequelize, {
   name: DataTypes.STRING,
-  email: DataTypes.STRING
+  email: DataTypes.STRING,
+  phone: DataTypes.
 })
 
 module.exports = User
