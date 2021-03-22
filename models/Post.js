@@ -6,7 +6,7 @@ const Post = pls.definePost(sequelize, {
   postId: DataTypes.STRING,
   title: DataTypes.STRING,
   description: DataTypes.STRING,
-  time: DataTypes.TIME
+  time: DataTypes.DATE
 })
 
 module.exports = Post
