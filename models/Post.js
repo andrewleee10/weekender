@@ -20,7 +20,8 @@ Post.init(
     },
     time: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: Date.now()
     },
     comment_id: {
       type: DataTypes.INTEGER
