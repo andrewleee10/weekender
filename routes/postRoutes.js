@@ -3,18 +3,17 @@ const { Post } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
-  res.json(req.user.items)
-})
 
 
-router.post('/users/register', (req, res) => {
-  const { name, email, username } = req.body
-  User.register(new User({ name, email, username }), req.body.password, err => {
+router.post('/posts', (req, res) => {
+  const { title, description } = req.body
+  Post.post(new Post({ title, description }), err => {
     if (err) { console.log(err) }
     res.sendStatus(200)
   })
 })
+
+
 
 
 
