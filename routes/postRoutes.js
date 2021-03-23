@@ -3,6 +3,12 @@ const { Post } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
+router.get('/posts', passport.authenticate('jwt'), (req, res) => {
+  Post.findAll({ where: { uid: req.user.id } })
+    .then(posts => res.json(posts))
+    .catch(err => console.log(err))
+})
+
 router.get('/posts/:id', passport.authenticate('jwt'), (req, res) => {
   Post.findOne({ where: { id: req.params.id } })
     .then(post => res.json(item))
