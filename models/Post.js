@@ -35,7 +35,7 @@ Post.init(
     modelName: 'posts'
   }
 )
-
+// add moment npm 
 module.exports = Post
 
 
