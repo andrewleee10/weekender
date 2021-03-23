@@ -10,20 +10,20 @@ router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
 router.get('/users/comments', (req, res) => {
   User.authenticate()(req.body.comments, (err, user) => {
     if (err) { console.log(err) }
-    res.json(user ? jwt.sign({id: user.id }, process.env.SECRET) : null)
+    res.json(user ? jwt.sign({ id: user.id }, process.env.SECRET) : null)
   })
 }
 )
 router.get('/users/posts', (req, res) => {
   User.authenticate()(req.body.posts, (err, user) => {
     if (err) { console.log(err) }
-    res.json(user ? jwt.sign({id: user.id }, process.env.SECRET) : null)
+    res.json(user ? jwt.sign({ id: user.id }, process.env.SECRET) : null)
   })
 })
 
 router.post('/users/register', (req, res) => {
-  const { name, email, username } = req.body
-  User.register(new User({ name, email, username }), req.body.password, err => {
+  const { name, email, username, bio } = req.body
+  User.register(new User({ name, email, username, bio }), req.body.password, err => {
     if (err) { console.log(err) }
     res.sendStatus(200)
   })
