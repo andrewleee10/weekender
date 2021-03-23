@@ -1,0 +1,17 @@
+.signBtn {
+  background-color: #ff5ca0;
+  color: white;
+  border-color: transparent;
+}
+
+.signBtn:hover {
+  background-color: #ff4c97;
+  color: white;
+  border-color: transparent;
+}
+
+.signBtn:active {
+  background-color: #ff5ca0;
+  color: white;
+  border-color: transparent;
+}
