@@ -21,9 +21,9 @@ Post.init(
     time: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Date.now()
+      // defaultValue: Date.now()
     },
-    comment_id: {
+    user_id: {
       type: DataTypes.INTEGER
     }
   },
