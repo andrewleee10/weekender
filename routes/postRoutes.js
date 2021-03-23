@@ -5,15 +5,26 @@ const jwt = require('jsonwebtoken')
 
 
 
-router.post('/posts', (req, res) => {
-  const { title, description } = req.body
-  Post.post(new Post({ title, description }), err => {
-    if (err) { console.log(err) }
-    res.sendStatus(200)
+router.post('/posts', passport.authenticate('jwt'), (req, res) => {
+  Post.create({
+    title: req.body.title,
+    description: req.body.description
   })
+  .then(post => res.json(post))
+  .catch(err => console.log(err))
 })
 
+router.put('/posts/:id', passport.authenticate('jwt'), (req, res) => {
+  Post.update(req.body, { where: {id: req.params.id} })
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err))
+})
 
+router.delete('/posts/:id', passport.authenticate('jwt'), (req, res) => {
+  Post.destroy({ where: { id: req.params.id } })
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err))
+})
 
 
 
