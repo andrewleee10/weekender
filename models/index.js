@@ -12,8 +12,9 @@ const User = require('./User.js')
 // Tags belongToMany Products (through ProductTag)
 // Product.belongToMany(Tag, { through: ProductTag, foreignKey: 'product_id' })
 
-User.hasMany(Post, {through: Comment, foreignKey: 'comment_id'})
-Post.hasMany(User, { foreignKey: 'post_id'})
+User.hasMany(Post, { through: Comment, foreignKey: 'comment_id'})
+Post.belongsTo(User, { foreignKey: 'post_id'})
+
 
 module.exports = {
   Comment,
