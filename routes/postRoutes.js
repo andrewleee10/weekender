@@ -18,7 +18,8 @@ router.get('/posts/:id', passport.authenticate('jwt'), (req, res) => {
 router.post('/posts', passport.authenticate('jwt'), (req, res) => {
   Post.create({
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    uid: req.user.id
   })
   .then(post => res.json(post))
   .catch(err => console.log(err))
