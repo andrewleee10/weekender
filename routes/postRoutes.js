@@ -19,7 +19,7 @@ router.get('/posts/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/posts', passport.authenticate('jwt'), (req, res) => {
+router.post('/posts',  (req, res) => {
   Post.create({
     title: req.body.title,
     description: req.body.description
