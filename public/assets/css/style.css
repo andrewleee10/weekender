@@ -27,7 +27,6 @@
 
 .profileColumn {
   margin-top: 20px;
-  /* width: 90%; */
 }
 
 .userProfile {
@@ -37,7 +36,8 @@
 }
 
 .userProfileImage {
-  height: 128px;
+  margin-top: 10px;
+  height: 120px;
   width: auto;
 }
 
