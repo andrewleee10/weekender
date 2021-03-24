@@ -4,6 +4,10 @@ const postData = [
   {
     title: 'Looking for people to play soccer!',
     description: 'Me and a couple friends want to play soccer but we do not have enough people. We are playing at Central Park at 2pm! Equipment is provided!'
+  },
+  {
+    title: 'Looking for some people to play basketball',
+    description: 'Some friends and I would like to play basketball at Central Park but do not have enough people. We are playing at 4pm and will provide equipment.'
   }
 ]
 

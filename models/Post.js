@@ -22,7 +22,7 @@ Post.init(
     time: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: DataTypes.NOW
+      defaultValue: moment().format('mmmm do yyyy, h:mm:ss a')
     },
     user_id: {
       type: DataTypes.INTEGER
