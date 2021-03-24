@@ -16,7 +16,7 @@
   border-color: transparent;
 }
 
-.navbar {
+.navbar, .postHeader {
   background-color: #9be1ff;
 }
 
@@ -24,3 +24,19 @@
   color: black !important;
   background-color: #4bc9ff !important;
 }
+
+.profileColumn {
+  margin-top: 20px;
+}
+
+.userProfile {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bebebe;
+}
+
+.userProfileImage {
+  height: 40%;
+  width: auto;
+}
+
