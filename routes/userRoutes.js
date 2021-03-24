@@ -1,13 +1,11 @@
 const router = require('express').Router()
-const { User, Post } = require('../models')
-const comments = require('../models/Comment.js')
-const posts = require('../models/Post.js')
+const { User, Post, Comment } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
-  res.json(req.user)
-})
+// router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
+//   res.json(req.user)
+// })
 
 
 // router.get('/users/comments', (req, res) => {
@@ -25,7 +23,7 @@ router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
 // })
 
 router.get('/users/comments', (req, res) => {
-  User.findAll({include: comments})
+  User.findAll({include: [Comment, Post]})
     .then(users => {
       res.json(users)
     })
@@ -50,11 +48,11 @@ router.post('/users/login', (req, res) => {
 })
 
 
-router.put('/users/comments', passport.authenticate('jwt'), (req, res) => {
-  User.update(req.body, { where: { id: req.user.id } })
-    .then(() => res.sendStatus(200))
-    .catch(err => console.log(err))
-})
+// router.put('/users/comments', passport.authenticate('jwt'), (req, res) => {
+//   User.update(req.body, { where: { id: req.user.id } }, { include: comments })
+//     .then(() => res.sendStatus(200))
+//     .catch(err => console.log(err))
+// })
 
 // router.delete('/users', passport.authenticate('jwt'), (req, res) => {
 //   User.destroy({ where: { id: req.user.id } })

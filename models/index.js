@@ -14,15 +14,15 @@ const User = require('./User.js')
 
 
 // user has many posts and comments
-User.hasMany(Post, { foreignKey: 'post_id'})
-User.hasMany(Comment, { forgeinKey: 'comment_id'})
+User.hasMany(Post, { foreignKey: 'user_id'})
+User.hasMany(Comment, { foreignKey: 'user_id'})
 // posts and comments has one user
-Post.belongsTo(User, { foreignKey: 'post_id'})
-Comment.belongsTo(User, { forgeinKey: 'comment_id'})
+Post.belongsTo(User, { foreignKey: 'user_id'})
+Comment.belongsTo(User, { foreignKey: 'user_id'})
 // posts has many comments 
-Post.hasMany(Comment, { foreignKey: 'uid'})
+Post.hasMany(Comment, { foreignKey: 'post_id'})
 // comments have one post
-Comment.belongsTo(Post, { foreignKey: 'uid'})
+Comment.belongsTo(Post, { foreignKey: 'post_id'})
 
 module.exports = {
   Comment,
