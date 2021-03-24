@@ -21,7 +21,7 @@ Post.init(
     time: {
       type: DataTypes.DATE,
       allowNull: false,
-      // defaultValue: Date.now()
+      defaultValue: DataTypes.NOW
     },
     user_id: {
       type: DataTypes.INTEGER
@@ -35,7 +35,6 @@ Post.init(
     modelName: 'posts'
   }
 )
-// add moment npm 
 module.exports = Post
 
 
