@@ -48,9 +48,6 @@ router.post('/users/login', (req, res) => {
   })
 })
 
-router.get('/users/test', passport.authenticate('jwt'), (req, res) => {
-  res.json("Hello World")
-})
 
 // router.put('/users', passport.authenticate('jwt'), (req, res) => {
 //   User.update(req.body, { where: { id: req.user.id } })
