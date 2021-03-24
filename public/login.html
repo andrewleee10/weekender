@@ -17,9 +17,69 @@
       </a>
     </div>
   </nav>
+
+  <div class="columns is-mobile login-column">
+    <div class="column is-one-third is-offset-one-third">
+      <h1 class= "is-size-2 has-text-centered">Login</h1>
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input" id="username" type="text" placeholder="" value="">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+      <p class="help is-success">Plese enter your username</p>
+    </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" id="password" type="password" placeholder="" value="">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    <p class="help is-success">Please enter your password</p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button signBtn" id="login">
+        Login
+      </button>
+    </p>
+    <a href="register.html">New User? Register</a>
+  </div>
+  </div>
+  </div>
   
 
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+      document.getElementById('login').addEventListener('click', event => {
+        event.preventDefault()
+        axios.post('/api/users/login', {
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+          .then(({ data: token }) => {
+            if (token) {
+              localStorage.setItem('token', token)
+              window.location = '/'
+            } else {
+              alert('Invalid username or password')
+            }
+          })
+          .catch(err => console.error(err))
+      })
+    </script>
 </body>
 </html>
