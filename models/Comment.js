@@ -16,9 +16,13 @@ Comment.init(
       autoIncrement: true,
       primaryKey: true
     },
-    time: {
+    time_posted: {
       type: DataTypes.DATE,
-      allowNull: false
+      allowNull: false,
+      defaultValue: DataTypes.NOW
+    },
+    user_id: {
+      type: DataTypes.INTEGER
     }
   },
   {
