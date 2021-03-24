@@ -5,9 +5,9 @@ const posts = require('../models/Post.js')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-// router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
-//   res.json(req.user)
-// })
+router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
+  res.json(req.user)
+})
 
 
 // router.get('/users/comments', (req, res) => {
@@ -27,10 +27,11 @@ const jwt = require('jsonwebtoken')
 router.get('/users/comments', (req, res) => {
   User.findAll({include: comments})
     .then(users => {
-      console.log(users)
+      res.json(users)
     })
     .catch(err => { console.log(err) }) 
 })
+
 
 
 router.post('/users/register', (req, res) => {
@@ -49,11 +50,11 @@ router.post('/users/login', (req, res) => {
 })
 
 
-// router.put('/users', passport.authenticate('jwt'), (req, res) => {
-//   User.update(req.body, { where: { id: req.user.id } })
-//     .then(() => res.sendStatus(200))
-//     .catch(err => console.log(err))
-// })
+router.put('/users/comments', passport.authenticate('jwt'), (req, res) => {
+  User.update(req.body, { where: { id: req.user.id } })
+    .then(() => res.sendStatus(200))
+    .catch(err => console.log(err))
+})
 
 // router.delete('/users', passport.authenticate('jwt'), (req, res) => {
 //   User.destroy({ where: { id: req.user.id } })
