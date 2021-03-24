@@ -22,11 +22,12 @@
 
 .navLeft:hover {
   color: black !important;
-  background-color: #4bc9ff !important;
+  background-color: #7ed8ff !important;
 }
 
 .profileColumn {
   margin-top: 20px;
+  /* width: 90%; */
 }
 
 .userProfile {
@@ -36,7 +37,11 @@
 }
 
 .userProfileImage {
-  height: 40%;
+  height: 128px;
   width: auto;
 }
 
+.columns {
+  margin-left: 0px;
+  margin-right: 0px;
+}

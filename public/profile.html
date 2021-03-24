@@ -9,6 +9,7 @@
   <title>My Profile</title>
 </head>
 <body>
+  
   <!-- Nav Bar -->
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -42,12 +43,12 @@
     </div>
   </nav>
 
-  <div class="columns profileColumn is-centered">
-    <div class="column is-10 userProfile">
-      <div class="columns">
+  <div class="columns profileColumn is-centered ">
+    <div class="column is-10 ">
+      <div class="columns userProfile">
 
         <div class="column is-3 has-text-centered">
-          <p class="has-text-weight-semibold is-size-2">Username</p>
+          <p class="has-text-weight-semibold is-size-3">Username</p>
           <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
         </div>
         <div class="column is-8">
@@ -84,7 +85,7 @@
   <div class="modal" id="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
-      <!-- Any other Bulma elements you want -->
+  
       <div class="box">
         <p class="is-size-3 is-bold has-text-centered">Create Post</p>
         <div class="field">
@@ -108,6 +109,13 @@
           </div>
           <p class="help">Enter the location of your event</p>
         </div>
+        <div class="field">
+          <label class="label">Date</label>
+          <div class="control">
+            <input class="date" type="datetime-local" id="eventDate">
+          </div>
+          <p class="help">Choose the date and time of your event</p>
+        </div>
         <div class="field is-grouped">
           <div class="control">
             <button class="button signBtn" id="makePostBtn">Submit</button>
@@ -124,31 +132,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
-  <script>
-
-    document.getElementById('modalBtn').addEventListener('click', event => {
-      document.getElementById('modal').classList.add('is-active')
-      document.documentElement.classList.add('is-clipped')
-    })
-
-    document.getElementById('modalClose').addEventListener('click', event => {
-      document.getElementById('eventTitle').value = ''
-      document.getElementById('eventDescription').value = ''
-      document.getElementById('eventLocation').value = ''
-      document.getElementById('modal').classList.remove('is-active')
-      document.documentElement.classList.remove('is-clipped')
-    })
-
-    document.getElementById('cancelPostBtn').addEventListener('click', event => {
-      document.getElementById('eventTitle').value = ''
-      document.getElementById('eventDescription').value = ''
-      document.getElementById('eventLocation').value = ''
-      document.getElementById('modal').classList.remove('is-active')
-      document.documentElement.classList.remove('is-clipped')
-    })
-
-  </script>
+  <script src="assets/apps/makePost.js"></script>
 </body>
 </html>
