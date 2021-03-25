@@ -4,7 +4,7 @@
   border-color: transparent;
 }
 
-.signBtn:hover {
+.signBtn:hover, .deetsHeader, .isGoing {
   background-color: #ff4c97;
   color: white;
   border-color: transparent;
@@ -16,15 +16,40 @@
   border-color: transparent;
 }
 
-.navbar {
+.navbar, .postHeader, .commentHeader, .isComment, #goingBtn {
   background-color: #9be1ff;
 }
 
 .navLeft:hover {
   color: black !important;
-  background-color: #4bc9ff !important;
+  background-color: #7ed8ff !important;
 }
 
-.login-column {
+.profileColumn {
   margin-top: 20px;
+}
+
+.userProfile {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #bebebe;
+}
+
+.userProfileImage {
+  margin-top: 10px;
+  height: 120px;
+  width: auto;
+}
+
+.columns {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.isReport {
+  background-color: red;
+}
+
+.Description {
+  line-height: 2;
 }
