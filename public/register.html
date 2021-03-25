@@ -17,8 +17,94 @@
       </a>
     </div>
   </nav>
+
+
+  <div class="columns is-mobile login-column">
+    <div class="column is-one-third is-offset-one-third">
+      <h1 class="is-size-2 has-text-centered">Register</h1>
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <input class="input" id="name" type="text" placeholder="">
+      <p class="help is-success">Please enter your full name</p>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Username</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" id="username" type="text" placeholder="" value="">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+    <p class="help is-success">Plese select a username</p>
+  </div>
+  
+  <div class="field">
+    <label class="label">Email</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" id="email" type="email" placeholder="" value="">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    <p class="help is-success">Please enter your email</p>
+  </div>
+  
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control has-icons-left has-icons-right">
+      <input class="input" id="password" type="password" placeholder="" value="">
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    <p class="help is-success">Please select your password</p>
+  </div>
+  
+  <!-- <div class="field">
+    <label class="label">Message</label>
+    <div class="control">
+      <textarea class="textarea" placeholder="Textarea"></textarea>
+    </div>
+  </div>
+   -->
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button signBtn">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+  </div>
+  
   
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    document.getElementById('register').addEventListener('click', event => {
+        event.preventDefault()
+        axios.post('/api/users/register', {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+          .then(() => window.location = '/login.html')
+          .catch(err => console.error(err))
+      })
+  </script>
 </body>
 </html>

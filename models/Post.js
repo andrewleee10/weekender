@@ -1,5 +1,7 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
+var moment = require('moment')
+let date = moment().format('MM DD YYYY, h:mm:ss a')
 
 class Post extends Model { }
 
@@ -31,7 +33,6 @@ Post.init(
     modelName: 'posts'
   }
 )
-// add moment npm 
 module.exports = Post
 
 
