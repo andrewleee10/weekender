@@ -2,9 +2,9 @@ const router = require('express').Router()
 const { Comment } = require('../models')
 const passport = require('passport')
 
-// GET all comments
-router.get('/comments', passport.authenticate('jwt'), (req, res) => {
-  Comment.findAll({ where: { uid: req.user.id } })
+// GET all comments on posts on explore page
+router.get('/comments', (req, res) => {
+  Comment.findAll({ })
     .then(comments => res.json(comments))
     .catch(err => console.log(err))
 })
@@ -18,21 +18,25 @@ router.get('/comments', passport.authenticate('jwt'), (req, res) => {
 
 // POST one Comment
 router.post('/comments', passport.authenticate('jwt'), (req, res) => {
-  Comment.create(req.body)
+  Comment.create({
+    text: req.body.text,
+    user_id: req.body.user_id,
+    post_id: req.body.post_id
+  })
     .then(comment => res.json(comment))
     .catch(err => console.log(err))
 })
 
-// PUT one Item
+// PUT one Comment
 router.put('/comments/:id', passport.authenticate('jwt'), (req, res) => {
-  Item.update(req.body, { where: { id: req.params.id } })
+  Comment.update(req.body, { where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
 
-// DELETE one Item
+// DELETE one Comment
 router.delete('/comments/:id', passport.authenticate('jwt'), (req, res) => {
-  Item.destroy({ where: { id: req.params.id } })
+  Comment.destroy({ where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
