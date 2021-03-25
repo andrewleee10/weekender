@@ -4,7 +4,7 @@
   border-color: transparent;
 }
 
-.signBtn:hover {
+.signBtn:hover, .deetsHeader, .isGoing {
   background-color: #ff4c97;
   color: white;
   border-color: transparent;
@@ -16,7 +16,7 @@
   border-color: transparent;
 }
 
-.navbar, .postHeader {
+.navbar, .postHeader, .commentHeader, .isComment, #goingBtn {
   background-color: #9be1ff;
 }
 
@@ -44,4 +44,12 @@
 .columns {
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.isReport {
+  background-color: red;
+}
+
+.Description {
+  line-height: 2;
 }
