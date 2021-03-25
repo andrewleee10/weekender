@@ -1,14 +1,11 @@
 const router = require('express').Router()
-const { User, Post } = require('../models')
-const comments = require('../models/Comment.js')
-const posts = require('../models/Post.js')
+const { User, Post, Comment } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 // router.get('/users/auth', passport.authenticate('jwt'), (req, res) => {
 //   res.json(req.user)
 // })
-
 
 // router.get('/users/comments', (req, res) => {
 //   User.authenticate()(req.body.comments, (err, user) => {
@@ -24,15 +21,16 @@ const jwt = require('jsonwebtoken')
 //   })
 // })
 
-router.get('/users/comments', (req, res) => {
-  User.findAll({include: comments})
+// User can pull up all of their posts
+router.get('/users/posts', passport.authenticate('jwt'), (req, res) => {
+  User.findAll({include: [Post, Comment]})
     .then(users => {
-      console.log(users)
+      res.json(users)
     })
     .catch(err => { console.log(err) }) 
 })
 
-
+// User registers
 router.post('/users/register', (req, res) => {
   const { name, email, username, phone, bio } = req.body
   User.register(new User({ name, email, username, phone, bio }), req.body.password, err => {
@@ -41,6 +39,7 @@ router.post('/users/register', (req, res) => {
   })
 })
 
+// User logs in
 router.post('/users/login', (req, res) => {
   User.authenticate()(req.body.username, req.body.password, (err, user) => {
     if (err) { console.log(err) }
@@ -48,9 +47,8 @@ router.post('/users/login', (req, res) => {
   })
 })
 
-
-// router.put('/users', passport.authenticate('jwt'), (req, res) => {
-//   User.update(req.body, { where: { id: req.user.id } })
+// router.put('/users/comments', passport.authenticate('jwt'), (req, res) => {
+//   User.update(req.body, { where: { id: req.user.id } }, { include: comments })
 //     .then(() => res.sendStatus(200))
 //     .catch(err => console.log(err))
 // })
