@@ -3,8 +3,8 @@ const { Comment } = require('../models')
 const passport = require('passport')
 
 // GET all comments
-router.get('/comments', passport.authenticate('jwt'), (req, res) => {
-  Comment.findAll({ where: { uid: req.user.id } })
+router.get('/comments', (req, res) => {
+  Comment.findAll({})
     .then(comments => res.json(comments))
     .catch(err => console.log(err))
 })
@@ -25,14 +25,14 @@ router.post('/comments', passport.authenticate('jwt'), (req, res) => {
 
 // PUT one Item
 router.put('/comments/:id', passport.authenticate('jwt'), (req, res) => {
-  Item.update(req.body, { where: { id: req.params.id } })
+  Comment.update(req.body, { where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
 
 // DELETE one Item
 router.delete('/comments/:id', passport.authenticate('jwt'), (req, res) => {
-  Item.destroy({ where: { id: req.params.id } })
+  Comment.destroy({ where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
     .catch(err => console.log(err))
 })
