@@ -1,7 +1,6 @@
 const sequelize = require('../db')
 const { Model, DataTypes } = require('sequelize')
 var moment = require('moment')
-let date = moment().format('MM DD YYYY, h:mm:ss a')
 
 class Post extends Model { }
 
@@ -20,8 +19,13 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    time: {
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    dateTime: {
       type: DataTypes.DATE,
+      allowNull: false,
       defaultValue: DataTypes.NOW
     }
   },

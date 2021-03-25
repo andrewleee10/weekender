@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Post, Comment } = require('../models')
+const { User, Post, Comment, isGoing } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
@@ -23,7 +23,7 @@ const jwt = require('jsonwebtoken')
 
 // User can pull up all of their posts
 router.get('/users/posts', passport.authenticate('jwt'), (req, res) => {
-  User.findAll({ include: [Post, Comment] })
+  User.findAll({ include: [Post, Comment, isGoing] })
     .then(users => {
       res.json(users)
     })
