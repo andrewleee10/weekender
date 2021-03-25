@@ -18,7 +18,11 @@ router.get('/comments', (req, res) => {
 
 // POST one Comment
 router.post('/comments', passport.authenticate('jwt'), (req, res) => {
-  Comment.create(req.body)
+  Comment.create({
+    text: req.body.text,
+    post_id: req.body.post_id,
+    user_id: req.body.user_id
+  })
     .then(comment => res.json(comment))
     .catch(err => console.log(err))
 })
