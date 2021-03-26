@@ -46,7 +46,7 @@
   <!-- Tiles   -->
 
   <section class="section">
-    <div class="container">
+    <div class="container" id="allPosts">
       <div class="tile is-ancestor" id="row1">
         <div class="tile is-parent">
           <article class="tile is-child box notification is-primary">
@@ -197,6 +197,7 @@
               game gathering to happen at sharky's where the losing kickball team will have a chance at redemption
               through a good old fashioned flip cup game. </p>
             <p>location: Edison Community Park, Huntington Beach, CA</p>
+            <button class="seeMore">See Full Details</button>
           </article>
         </div>
       `
@@ -211,6 +212,7 @@
                 water to take a dip so bring your swim trunks if you're feeling froggy.</p>
               <p>location: Tenaja Trials Cleveland National Forest(parking lot next to the store)</p>
               <p>time/date: 9:00AM Saturday, April 9th</p>
+              <button class="seeMore">See Full Details</button>
           </article>
         </div>
       `
@@ -227,12 +229,19 @@
                 Be smart and safe out there and keep the contact as minimal as possible.</p>
               <p>Sunset Ridge Park, Newport Beach, CA</p>
               <p>2021-03-27T08:00</p>
+              <button class="seeMore">See Full Details</button>
           </article>
         </div>
       `
     }
 
+    document.addEventListener('click', event => {
+        if (event.target.classList.contains('seeMore')) {
+          console.log('ping')
+          window.location = '/post'
+        }
 
+      })
 
   </script>
 </body>
