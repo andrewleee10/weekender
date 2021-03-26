@@ -1,0 +1,6 @@
+-- DROP DATABASE
+DROP DATABASE IF EXISTS weekender_db;
+
+-- CREATE DATABASE
+CREATE DATABASE weekender_db;
+

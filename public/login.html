@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Login</title>
+</head>
+<body>
+  <!-- Nav Bar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="">
+        <img src="./assets/images/weekndrLogoText.png" alt="logo">
+      </a>
+    </div>
+  </nav>
+
+  <div class="columns is-mobile login-column">
+    <div class="column is-one-third is-offset-one-third">
+      <h1 class= "is-size-2 has-text-centered">Login</h1>
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control">
+        <input class="input" id="username" type="text" placeholder="" value="">
+      </div>
+      <p class="help is-success">Plese enter your username</p>
+    </div>
+  <div class="field">
+    <label class="label">Password</label>
+    <div class="control">
+      <input class="input" id="password" type="password" placeholder="" value="">
+    </div>
+    <p class="help is-success">Please enter your password</p>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button signBtn" id="login">
+        Login
+      </button>
+    </p>
+    <a href="register.html">New User? Register</a>
+  </div>
+  </div>
+  </div>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+      document.getElementById('login').addEventListener('click', event => {
+        event.preventDefault()
+        axios.post('/api/users/login', {
+          username: document.getElementById('username').value,
+          password: document.getElementById('password').value
+        })
+          .then(({ data: token }) => {
+            if (token) {
+              localStorage.setItem('token', token)
+              window.location = '/'
+            } else {
+              alert('Invalid username or password')
+            }
+          })
+          .catch(err => console.error(err))
+      })
+    </script>
+</body>
+</html>

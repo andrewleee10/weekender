@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>My Profile</title>
+</head>
+
+<body>
+
+  <!-- Nav Bar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="">
+        <img src="./assets/images/weekndrLogoText.png" alt="logo">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navContent">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navContent" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item navLeft" id="explore">Explore</a>
+        <a class="navbar-item navLeft">Maps</a>
+        <a class="navbar-item navLeft" id="profile">Profile</a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons" id="navbarRight">
+            <!-- <a class="button signBtn"><strong>Sign up</strong></a>
+            <a class="button is-white">Log in</a> -->
+            <!-- <a class="button signBtn"><strong>Sign out</strong></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+ 
+
+
+      <div class="columns profileColumn is-centered ">
+        <div class="column is-9 ">
+          <div class="columns userProfile ">
+
+            <div class="column is-3 has-text-centered">
+              <p class="has-text-weight-semibold is-size-3">Username</p>
+              <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
+            </div>
+            <div class="column">
+              <p class="has-text-weight-semibold is-size-4">Bio:</p>
+              <div class="block">
+                Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida
+                at
+                eget
+                metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis
+                consectetur
+                purus sit amet fermentum.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-4 is-offset-2">
+          <nav class="panel has-text-centered">
+            <p class="panel-heading postHeader">Posts</p>
+
+            <a class="panel-block ">Post 1: This is a post to test how the panel will look</a>
+            <a class="panel-block ">Post 2: This is a post to test how the panel will look</a>
+            <a class="panel-block ">Post 3: This is a post to test how the panel will look</a>
+            <a class="panel-block ">Post 4: This is a post to test how the panel will look</a>
+            <a class="panel-block ">Post 5: This is a post to test how the panel will look</a>
+            <a class="panel-block ">Post 6: This is a post to test how the panel will look</a>
+          </nav>
+        </div>
+        <div class="column is-4 ">
+          <button class="button is-large is-fullwidth signBtn" id="modalBtn">Create a Post</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+
+      <div class="box">
+        <p class="is-size-3 is-bold has-text-centered">Create Post</p>
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Event Title" id="eventTitle">
+          </div>
+          <p class="help">Enter the title for your event</p>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea class="textarea" type="text" rows="10" placeholder="Describe your event"
+              id="eventDescription"></textarea>
+          </div>
+          <p class="help">Enter a description for your event</p>
+        </div>
+        <div class="field">
+          <label class="label">Location</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Event Location" id="eventLocation">
+          </div>
+          <p class="help">Enter the location of your event</p>
+        </div>
+        <div class="field">
+          <label class="label">Date</label>
+          <div class="control">
+            <input class="date" type="datetime-local" id="eventDate">
+          </div>
+          <p class="help">Choose the date and time of your event</p>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button signBtn" id="makePostBtn">Submit</button>
+          </div>
+          <div class="control">
+            <button class="button is-info is-light" id="cancelPostBtn">Cancel</button>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <button class="modal-close is-large" id="modalClose" aria-label="close"></button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/apps/hamburger.js"></script>
+  <script src="assets/apps/makePost.js"></script>
+  <script src="assets/apps/navBtns.js"></script>
+</body>
+
+</html>
