@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Post</title>
 </head>
+
 <body>
   <!-- Nav Bar -->
   <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -15,21 +17,21 @@
       <a class="navbar-item" href="">
         <img src="./assets/images/weekndrLogoText.png" alt="logo">
       </a>
-  
+
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navContent">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-  
+
     <div id="navContent" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">Explore</a>
-        <a class="navbar-item">Maps</a>
-        <a class="navbar-item">Profile</a>
+        <a class="navbar-item navLeft">Explore</a>
+        <a class="navbar-item navLeft">Maps</a>
+        <a class="navbar-item navLeft">Profile</a>
       </div>
-  
+
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
@@ -43,59 +45,60 @@
   </nav>
 
   <section class="section">
-    <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
-   <p>Saturday, April 3rd, 2021</p> 
-  <h1 class="title">Kick Ball Game!!!</h1>
-  <h2 class="subtitle">
-    <strong>Hosted by: @DoubleJayandtheJayTones</strong>
-  </h2>
+    <div class="container has-text-centered">
+      <!-- <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded"> -->
+      <!-- <p class="is-bold">Saturday, April 3rd, 2021</p> -->
+      <h1 class="title is-1">Kick Ball Game!!!</h1>
+      <h2 class="subtitle is-3">
+        <strong>Hosted by: @DoubleJayandtheJayTones</strong>
+      </h2>
+    </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-4 is-offset-0 Description">
+        <div class="column is-4 is-offset-2 Description">
           <b>Description:</b>
           <p>Even if you haven't played kickball since your 7th grade PE class, come on down for some Sunday
             Funday Fun at the Edison Park in Huntington BEach. We'll get going at 3pm and if you do decide to
             bring any adult beverages for the game, please make wise decisions with your vessel choices. Post
             game gathering to happen at sharky's where the losing kickball team will have a chance at redemption
             through a good old fashioned flip cup game. </p>
-          <p>location: Edison Community Park, Huntington Beach, CA</p>
-         
+            <br>
+          <!-- <p class="has-text-weight-medium">Location: Edison Community Park, Huntington Beach, CA</p> -->
+
         </div>
-        <div class="column is-4 ml-6 mt-6">
+        <div class="column is-4 ">
           <div class="card">
-  <header class="card-header">
-    <p class="card-header-title deetsHeader">
-      Deets:
-    </p>
-      <span class="icon">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-    </button>
-  </header>
-  <div class="card-content">
-    <div class="content">
-      <p>
-        Saturday, April 3rd, 2021<br>
-        5:00 PM to 7:00 PM
-      </p>
-      <br>
-      <p>
-        Edison Community Park<br>
-        21377 Magnolia St., Huntington Beach, CA 92646
-      </p>
-    </div>
-  </div>
-  <footer class="card-footer">
-    <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Is Going?</button>
-    <button class="button is-medium is-fullwidth signBtn" id="modalBtn">Make Comment</button>
-    <!-- <a href="#" class="card-footer-item isGoing">Going?</a>
+            <header class="card-header">
+              <p class="card-header-title deetsHeader">
+                Deets:
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <p class="has-text-weight-medium">Date:</p>
+                <p>
+                  Saturday, April 3rd, 2021<br>
+                  5:00 PM to 7:00 PM
+                </p>
+                <br>
+                <p class="has-text-weight-medium">Location:</p>
+                <p>
+                  Edison Community Park<br>
+                  21377 Magnolia St., Huntington Beach, CA 92646
+                </p>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Is Going?</button>
+              <button class="button is-medium is-fullwidth signBtn" id="modalBtn">Make Comment</button>
+              <!-- <a href="#" class="card-footer-item isGoing">Going?</a>
     <a href="#" class="card-footer-item isComment">Comment</a> -->
-    <!-- <a href="#" class="card-footer-item isReport">Report</a> -->
-  </footer>
-</div>
+              <!-- <a href="#" class="card-footer-item isReport">Report</a> -->
+            </footer>
+          </div>
         </div>
       </div>
     </div>
@@ -122,24 +125,22 @@
     </div>
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
-  
+
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-8 is-offset-0">
+        <div class="column is-8 is-offset-2">
           <div class="card">
             <header class="card-header">
               <p class="card-header-title commentHeader">
                 Comments:
               </p>
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </button>
+
             </header>
             <div class="card-content">
               <div class="content">
-                I can't wait to get back out there! Covid has definitely given me a strong case of kickball itch, see y'all soon!
+                I can't wait to get back out there! Covid has definitely given me a strong case of kickball itch, see
+                y'all soon!
                 <br>
                 <br>
                 <b>@JayJay21</b>
@@ -149,7 +150,7 @@
             </div>
             <div class="card-content">
               <div class="content">
-                Hellllls Yeah!  See you crazy kids out there!
+                Hellllls Yeah! See you crazy kids out there!
                 <br>
                 <br>
                 <b>@KenDaddyCane</b>
@@ -163,19 +164,20 @@
               <a href="#" class="card-footer-item">Delete</a>
             </footer> -->
           </div>
-         
+
         </div>
-        <div class="column is-4 ">
-        </div>
+        <!-- <div class="column is-4 ">
+        </div> -->
       </div>
     </div>
   </section>
 
-  
-  
 
-  
+
+
+
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
 </body>
+
 </html>

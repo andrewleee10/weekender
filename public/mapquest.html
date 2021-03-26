@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+
+<body style="border: 0; margin: 0;">
+  <div id="map" style="width: 100%; height: 530px;"></div>
+</body>
+</head>
+
+<body>
+
+  <form>
+    <p>
+      <label for="address">address</label>
+      <input type="text" name="address" id="address">
+    </p>
+    <button id="search">Search</button>
+  </form>
+
+  <div id="map"></div>
+
+  <div id="lat"></div>
+
+  <div id="long"></div>
+
+  <!-- <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+
+
+
+    document.getElementById('search').addEventListener('click', event => {
+      event.preventDefault()
+      let place = document.getElementById('address').value
+
+      axios.get(`https://www.mapquestapi.com/geocoding/v1/address?key=VG57G633HAmNJyvxUvKPqaP7eg1y7Amt&inFormat=kvp&outFormat=json&location=${place}`)
+        .then(res => {
+
+          let location = res.data
+
+          console.log(location)
+
+          document.getElementById('lat').innerHTML = `
+          <p>lat: ${location.results[0].locations[0].displayLatLng.lat}</p>`
+          document.getElementById('long').innerHTML = `
+          <p>long: ${location.results[0].locations[0].displayLatLng.lng}
+          `
+
+          L.mapquest.key = 'VG57G633HAmNJyvxUvKPqaP7eg1y7Amt';
+
+          var map = L.mapquest.map('map', {
+            center: [`${location.results[0].locations[0].displayLatLng.lat}`, `${location.results[0].locations[0].displayLatLng.lng}`],
+            layers: L.mapquest.tileLayer('map'),
+            zoom: 12
+          });
+
+          map.addControl(L.mapquest.control());
+
+          L.mapquest.map()
+
+        })
+
+
+    })
+      // })
+
+      // ${ results.locations[0].displaLatLng.lat }, ${ results.locations[0].displaLatLng.lng }
+      // window.onload
+
+        //   getCoordinates() =  window.onload = function () {
+                // L.mapquest.key = 'VG57G633HAmNJyvxUvKPqaP7eg1y7Amt';
+
+        //         var map = L.mapquest.map('map', {
+        //           center: [`${ location.results[0].locations[0].displayLatLng.lat }, ${location.results[0].locations[0].displayLatLng.lng }`],
+        //           layers: L.mapquest.tileLayer('map'),
+        //           zoom: 12
+        //         });
+
+        //         map.addControl(L.mapquest.control());
+        //       }
+
+        // L.mapquest.map()
+
+
+  </script>
+</body>
+
+</html>

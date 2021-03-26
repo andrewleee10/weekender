@@ -46,6 +46,9 @@
   margin-right: 0px;
 }
 
+.is-warning {
+  color: white;
+}
 .isReport {
   background-color: red;
 }
