@@ -20,17 +20,13 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    time: {
+    dateTime: {
       type: DataTypes.DATE,
-<<<<<<< HEAD
       allowNull: false,
-      defaultValue: date
+      defaultValue: DataTypes.NOW
     },
     user_id: {
       type: DataTypes.INTEGER
-=======
-      defaultValue: DataTypes.NOW
->>>>>>> 68ad1cf4c83782198a46640105744789efae5983
     }
   },
   {
