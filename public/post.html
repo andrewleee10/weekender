@@ -45,7 +45,7 @@
   </nav>
 
   <section class="section">
-    <div class="container has-text-centered">
+    <div class="container has-text-centered" id="title">
       <!-- <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded"> -->
       <!-- <p class="is-bold">Saturday, April 3rd, 2021</p> -->
       <h1 class="title is-1">Kick Ball Game!!!</h1>
@@ -58,7 +58,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-4 is-offset-2 Description">
+        <div class="column is-4 is-offset-2 Description" id="description">
           <b>Description:</b>
           <p>Even if you haven't played kickball since your 7th grade PE class, come on down for some Sunday
             Funday Fun at the Edison Park in Huntington BEach. We'll get going at 3pm and if you do decide to
@@ -76,7 +76,7 @@
                 Deets:
               </p>
             </header>
-            <div class="card-content">
+            <div class="card-content" id="details">
               <div class="content">
                 <p class="has-text-weight-medium">Date:</p>
                 <p>
@@ -92,7 +92,7 @@
               </div>
             </div>
             <footer class="card-footer">
-              <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Is Going?</button>
+              <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Attend?</button>
               <button class="button is-medium is-fullwidth signBtn" id="modalBtn">Make Comment</button>
               <!-- <a href="#" class="card-footer-item isGoing">Going?</a>
     <a href="#" class="card-footer-item isComment">Comment</a> -->
@@ -137,8 +137,8 @@
               </p>
 
             </header>
-            <div class="card-content">
-              <div class="content">
+            <div class="card-content" id="comments">
+              <!-- <div class="content">
                 I can't wait to get back out there! Covid has definitely given me a strong case of kickball itch, see
                 y'all soon!
                 <br>
@@ -146,17 +146,17 @@
                 <b>@JayJay21</b>
                 <br>
                 <time datetime="2016-1-1">11:09 PM - 27 March 2021</time>
-              </div>
+              </div> -->
             </div>
             <div class="card-content">
-              <div class="content">
+              <!-- <div class="content">
                 Hellllls Yeah! See you crazy kids out there!
                 <br>
                 <br>
                 <b>@KenDaddyCane</b>
                 <br>
                 <time datetime="2016-1-1">11:35 PM - 27 March 2021</time>
-              </div>
+              </div> -->
             </div>
             <!-- <footer class="card-footer">
               <a href="#" class="card-footer-item">Save</a>
@@ -179,6 +179,65 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/navBtns.js"></script>
+
+  <script>
+
+    axios.get(`/api/posts/${1}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then(res => {
+        console.log(res)
+        // document.getElementById('title').innerHTML = `
+        //   <h1 class="title is-1">${posts.title}</h1>
+        //   <h2 class="subtitle is-3">
+        //     <strong>Hosted by: @${posts.username}</strong>
+        //   </h2>
+        // `
+        // document.getElementById('description').innerHTML = `
+        //   <b>Description:</b>
+        //     <p>${posts.description}</p>
+        //   <br>
+        // `
+        // document.getElementById('details').innerHTML = `
+        //   <div class="content">
+        //     <p class="has-text-weight-medium">Date:</p>
+        //     <p>
+        //       ${posts.dateTime}
+        //     </p>
+        //     <br>
+        //     <p class="has-text-weight-medium">Location:</p>
+        //     <p>
+        //       ${posts.location}<br>
+        //     </p>
+        //   </div>
+        // `
+        // const commentElem = document.createElement('div')
+        // commentElem.className = 'content'
+        // commentElem.innerHTML = `
+        //     <b>@${posts.username}</b>
+        //     <br>
+        //     ${posts.text}
+        //     <br>
+        //     <br>
+        //     <time datetime="2016-1-1">${posts.time_posted}</time>
+        // `
+        // document.getElementById('comments').append(commentElem)
+      })
+      .catch(err => console.log(err))
+
+  
+    document.getElementById('goingBtn').addEventListener('click', () => {
+
+    })
+
+    document.getElementById('modalBtn').addEventListener('click', () => {
+
+    })
+
+  </script>
+  
 </body>
 
 </html>
