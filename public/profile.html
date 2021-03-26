@@ -152,10 +152,9 @@
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
-        .then(({ data: posts }) => {
-          console.log(posts)
-          posts.forEach(post => {
-            const postList = document.getElementById('title')
+        .then(res => {
+          console.log(res)
+        })
           })       
   </script>
 
