@@ -33,6 +33,7 @@ router.get('/users/posts', passport.authenticate('jwt'), (req, res) => {
 // User registers
 router.post('/users/register', (req, res) => {
   const { name, email, username, phone, bio } = req.body
+  console.log('ping')
   User.register(new User({ name, email, username, phone, bio }), req.body.password, err => {
     if (err) { console.log(err) }
     res.sendStatus(200)
