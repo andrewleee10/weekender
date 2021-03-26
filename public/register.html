@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Register</title>
 </head>
 <body>
@@ -62,16 +62,25 @@
     <p class="help is-success">Please select your password</p>
   </div>
   
-  <!-- <div class="field">
-    <label class="label">Message</label>
+  <div class="field">
+    <label class="label">Phone</label>
     <div class="control">
-      <textarea class="textarea" placeholder="Textarea"></textarea>
+      <input class="input" id="phone" type="text" placeholder="" value="">
     </div>
+    <p class="help is-success">Please enter your phone number</p>
   </div>
-   -->
+  
+  <div class="field">
+    <label class="label">Bio</label>
+    <div class="control">
+      <textarea class="textarea" id="bio" placeholder="Enter a description about yourself"></textarea>
+    </div>
+    <p class="help is-success" >Please write a little about your interest</p>
+  </div>
+  
   <div class="field is-grouped">
     <div class="control">
-      <button class="button signBtn">Submit</button>
+      <button class="button signBtn" id="register">Submit</button>
     </div>
     <div class="control">
       <button class="button is-link is-light">Cancel</button>
@@ -90,7 +99,9 @@
           name: document.getElementById('name').value,
           email: document.getElementById('email').value,
           username: document.getElementById('username').value,
-          password: document.getElementById('password').value
+          password: document.getElementById('password').value,
+          phone: document.getElementById('phone').value,
+          bio: document.getElementById('bio').value
         })
           .then(() => window.location = '/login.html')
           .catch(err => console.error(err))

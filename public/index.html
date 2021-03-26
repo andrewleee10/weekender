@@ -27,17 +27,17 @@
 
     <div id="navContent" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item navLeft">Explore</a>
+        <a class="navbar-item navLeft" id="explore">Explore</a>
         <a class="navbar-item navLeft">Maps</a>
-        <a class="navbar-item navLeft">Profile</a>
+        <a class="navbar-item navLeft" id="profile">Profile</a>
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="button signBtn"><strong>Sign up</strong></a>
+          <div class="buttons" id="navbarRight">
+            <!-- <a class="button signBtn"><strong>Sign up</strong></a>
             <a class="button is-white">Log in</a>
-            <!-- <a class="button signBtn"><strong>Sign out</strong></a> -->
+            <a class="button signBtn"><strong>Sign out</strong></a> -->
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
 
   <section class="section">
     <div class="container">
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor" id="row1">
         <div class="tile is-parent">
           <article class="tile is-child box notification is-primary">
             <p class="title">Kick Ball Game!!!</p>
@@ -87,7 +87,7 @@
           </article>
         </div>
       </div>
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor" id="row2">
         <div class="tile is-parent">
           <article class="tile is-child box notification is-primary">
             <p class="title">Kick Ball Game!!!</p>
@@ -127,7 +127,7 @@
           </article>
         </div>
       </div>
-      <div class="tile is-ancestor">
+      <div class="tile is-ancestor" id="row3">
         <div class="tile is-parent">
           <article class="tile is-child box notification is-primary">
             <p class="title">Kick Ball Game!!!</p>
@@ -177,6 +177,64 @@
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
+  <script src="assets/apps/navBtns.js"></script>
+  <script>
+    const tileColors = ['is-primary', 'is-link', 'is-info', 'is-success', 'is-warning', 'is-danger']
+
+    document.getElementById('row1').innerHTML = ''
+    document.getElementById('row2').innerHTML = ''
+    document.getElementById('row3').innerHTML = ''
+
+    for(let i = 0; i < 3; i++) {
+      document.getElementById('row1').innerHTML += `
+      <div class="tile is-parent">
+          <article class="tile is-child box notification ${tileColors[Math.floor(Math.random() * 6)]}">
+            <p class="title">Kick Ball Game!!!</p>
+            <p class="subtitle">(Co-Ed)Come one come all</p>
+            <p>Even if you haven't played kickball since your 7th grade PE class, come on down for some Sunday
+              Funday Fun at the Edison Park in Huntington BEach. We'll get going at 3pm and if you do decide to
+              bring any adult beverages for the game, please make wise decisions with your vessel choices. Post
+              game gathering to happen at sharky's where the losing kickball team will have a chance at redemption
+              through a good old fashioned flip cup game. </p>
+            <p>location: Edison Community Park, Huntington Beach, CA</p>
+          </article>
+        </div>
+      `
+      document.getElementById('row2').innerHTML += `
+      <div class="tile is-parent">
+          <article class="tile is-child box notification ${tileColors[Math.floor(Math.random() * 6)]}">
+            <p class="title">Tenaja Falls Trail Walk</p>
+            <p class="subtitle">Easy Trail</p>
+            <div class="content">
+              <p>Let's get out and enjoy this lovely weather that we're having! Meed up at the parking lot next to
+                the general store on the right side of the road and we'll get down to trailing! Should be enough
+                water to take a dip so bring your swim trunks if you're feeling froggy.</p>
+              <p>location: Tenaja Trials Cleveland National Forest(parking lot next to the store)</p>
+              <p>time/date: 9:00AM Saturday, April 9th</p>
+          </article>
+        </div>
+      `
+      document.getElementById('row3').innerHTML += `
+      <div class="tile is-parent">
+          <article class="tile is-child box notification ${tileColors[Math.floor(Math.random() * 6)]}">
+            <p class="title">Pick Up Soccer Game</p>
+            <p class="subtitle">All Skill Levels Welcome</p>
+            <div class="content">
+              <p>Welcoming all skill levels for a fun pick up soccer game at Sunset Ridge Park in Newport Beach on
+                Saturday mornings. 11
+                a side, no goalies, and first half of the game will be two touch to focus on our fundamentals.
+
+                Be smart and safe out there and keep the contact as minimal as possible.</p>
+              <p>Sunset Ridge Park, Newport Beach, CA</p>
+              <p>2021-03-27T08:00</p>
+          </article>
+        </div>
+      `
+    }
+
+
+
+  </script>
 </body>
 
 </html>
