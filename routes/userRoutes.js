@@ -23,7 +23,7 @@ const jwt = require('jsonwebtoken')
 
 // User can pull up all of their posts
 router.get('/users/posts', passport.authenticate('jwt'), (req, res) => {
-  User.findAll({ include: [Post, Comment, isGoing] })
+  User.findAll( { where: { id: req.user.id } }, { include: [Post, Comment, isGoing] })
     .then(users => {
       res.json(users)
     })
