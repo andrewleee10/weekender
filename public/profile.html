@@ -52,11 +52,11 @@
           <div class="columns userProfile ">
 
             <div class="column is-3 has-text-centered">
-              <p class="has-text-weight-semibold is-size-3">Username</p>
+              <p class="has-text-weight-semibold is-size-3" id="username">Username</p>
               <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
             </div>
             <div class="column">
-              <p class="has-text-weight-semibold is-size-4">Bio:</p>
+              <p class="has-text-weight-semibold is-size-4" id="bio">Bio:</p>
               <div class="block">
                 Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida
                 at
@@ -103,7 +103,7 @@
         <div class="field">
           <label class="label">Title</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Event Title" id="eventTitle">
+            <input class="input" type="text" placeholder="Event Title" id="title">
           </div>
           <p class="help">Enter the title for your event</p>
         </div>
@@ -111,7 +111,7 @@
           <label class="label">Description</label>
           <div class="control">
             <textarea class="textarea" type="text" rows="10" placeholder="Describe your event"
-              id="eventDescription"></textarea>
+              id="description"></textarea>
           </div>
           <p class="help">Enter a description for your event</p>
         </div>
@@ -125,7 +125,7 @@
         <div class="field">
           <label class="label">Date</label>
           <div class="control">
-            <input class="date" type="datetime-local" id="eventDate">
+            <input class="date" type="datetime-local" id="dateTime">
           </div>
           <p class="help">Choose the date and time of your event</p>
         </div>
@@ -145,6 +145,30 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- <script>
+      axios.post('/api/users/profile', {
+        username: document.getElementById('username').value,
+        bio: document.getElementById('bio').value
+      })
+        .then(() => window.location = '/profile.html')
+        .catch(err => console.error(err))
+    })
+  </script> -->
+
+  <script>
+    document.getElementById('makePostBtn').addEventListener('click', event => {
+      event.preventDefault()
+      axios.post('api/posts/profile', {
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        dateTime: document.getElementById('dateTime').value
+      })
+      .then(() => window.location = '/profile.html')
+      .catch(err => console.error(err))
+    })
+  </script>
+
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/makePost.js"></script>
   <script src="assets/apps/navBtns.js"></script>
