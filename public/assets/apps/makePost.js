@@ -26,12 +26,22 @@ document.getElementById('makePostBtn').addEventListener('click', event => {
   event.preventDefault()
 
   let newPost = {
-    name: document.getElementById('eventTitle').value,
+    title: document.getElementById('eventTitle').value,
     description: document.getElementById('eventDescription').value,
     location: document.getElementById('eventLocation').value,
     dateTime: document.getElementById('eventDate').value
+
   }
 
-  console.log(newPost)
+  axios.post('api/posts', newPost, {
+    headers: {
+      'Authorization': `Bearer ${ localStorage.getItem('token')}` }
+    })
+    .then(res => {
+      console.log(res)
+      window.location = '/explore'
+    })
+    .catch(err => console.log(err))
+
   closeModal()
 })
