@@ -27,17 +27,17 @@
 
     <div id="navContent" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item navLeft">Explore</a>
+        <a class="navbar-item navLeft" id="explore">Explore</a>
         <a class="navbar-item navLeft">Maps</a>
-        <a class="navbar-item navLeft">Profile</a>
+        <a class="navbar-item navLeft" id="profile">Profile</a>
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="button signBtn"><strong>Sign up</strong></a>
+          <div class="buttons" id="navbarRight">
+            <!-- <a class="button signBtn"><strong>Sign up</strong></a>
             <a class="button is-white">Log in</a>
-            <!-- <a class="button signBtn"><strong>Sign out</strong></a> -->
+            <a class="button signBtn"><strong>Sign out</strong></a> -->
           </div>
         </div>
       </div>
@@ -177,6 +177,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
+  <script src="assets/apps/navBtns.js"></script>
   <script>
     const tileColors = ['is-primary', 'is-link', 'is-info', 'is-success', 'is-warning', 'is-danger']
 
@@ -230,6 +231,7 @@
         </div>
       `
     }
+
 
 
   </script>

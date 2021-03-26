@@ -19,33 +19,13 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
     dateTime: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-
-    time: {
-      type: DataTypes.DATE,
-
       allowNull: false,
-      defaultValue: date
+      defaultValue: DataTypes.NOW
     },
     user_id: {
       type: DataTypes.INTEGER
-
-      defaultValue: DataTypes.NOW
-
-    location: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }, 
-    dateTime: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW
     }
   },
   {
