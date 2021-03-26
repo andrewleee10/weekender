@@ -3,15 +3,17 @@ const { Post } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
-router.get('/posts', (req, res) => {
-  Post.findAll({
 
-  })
+// FIND ALL posts on explore page 
+router.get('/posts', (req, res) => {
+  Post.findAll({ })
     .then(posts => res.json(posts))
     .catch(err => console.log(err))
 })
 
-router.get('/posts/:id', (req, res) => {
+
+// FIND ONE specifc post (?)
+router.get('/posts/:id', passport.authenticate('jwt'), (req, res) => {
   Post.findOne({
     where: { id: req.params.id }
   })
@@ -19,15 +21,22 @@ router.get('/posts/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/posts',  (req, res) => {
+
+// CREATE a new post when logged in
+router.post('/posts', passport.authenticate('jwt'),  (req, res) => {
   Post.create({
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    location: req.body.location,
+    dateTime: req.body.dateTime,
+    user_id: req.user.id
   })
     .then(post => res.json(post))
     .catch(err => console.log(err))
 })
 
+
+// UPDATE post when logged in
 router.put('/posts/:id', passport.authenticate('jwt'), (req, res) => {
   Post.update(req.body, {
     where: { id: req.params.id }
@@ -36,6 +45,8 @@ router.put('/posts/:id', passport.authenticate('jwt'), (req, res) => {
     .catch(err => console.log(err))
 })
 
+
+// DELETE post when logged in
 router.delete('/posts/:id', passport.authenticate('jwt'), (req, res) => {
   Post.destroy({ where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
