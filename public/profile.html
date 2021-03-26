@@ -103,7 +103,7 @@
         <div class="field">
           <label class="label">Title</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Event Title" id="title">
+            <input class="input" type="text" placeholder="Event Title" id="eventTitle">
           </div>
           <p class="help">Enter the title for your event</p>
         </div>
@@ -111,7 +111,7 @@
           <label class="label">Description</label>
           <div class="control">
             <textarea class="textarea" type="text" rows="10" placeholder="Describe your event"
-              id="description"></textarea>
+              id="eventDescription"></textarea>
           </div>
           <p class="help">Enter a description for your event</p>
         </div>
@@ -125,7 +125,7 @@
         <div class="field">
           <label class="label">Date</label>
           <div class="control">
-            <input class="date" type="datetime-local" id="dateTime">
+            <input class="date" type="datetime-local" id="eventDate">
           </div>
           <p class="help">Choose the date and time of your event</p>
         </div>
@@ -156,18 +156,6 @@
     })
   </script> -->
 
-  <script>
-    document.getElementById('makePostBtn').addEventListener('click', event => {
-      event.preventDefault()
-      axios.post('api/posts/profile', {
-        title: document.getElementById('title').value,
-        description: document.getElementById('description').value,
-        dateTime: document.getElementById('dateTime').value
-      })
-      .then(() => window.location = '/profile.html')
-      .catch(err => console.error(err))
-    })
-  </script>
 
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/makePost.js"></script>
