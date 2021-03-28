@@ -26,9 +26,8 @@
     </div>
 
     <div id="navContent" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-start" id="navbarLeft">
         <a class="navbar-item navLeft" id="explore">Explore</a>
-        <a class="navbar-item navLeft">Maps</a>
         <a class="navbar-item navLeft" id="profile">Profile</a>
       </div>
 
@@ -46,28 +45,15 @@
 
   <section class="section">
     <div class="container has-text-centered" id="title">
-      <!-- <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded"> -->
-      <!-- <p class="is-bold">Saturday, April 3rd, 2021</p> -->
-      <h1 class="title is-1">Kick Ball Game!!!</h1>
-      <h2 class="subtitle is-3">
-        <strong>Hosted by: @DoubleJayandtheJayTones</strong>
-      </h2>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-4 is-offset-2 Description" id="description">
-          <b>Description:</b>
-          <p>Even if you haven't played kickball since your 7th grade PE class, come on down for some Sunday
-            Funday Fun at the Edison Park in Huntington BEach. We'll get going at 3pm and if you do decide to
-            bring any adult beverages for the game, please make wise decisions with your vessel choices. Post
-            game gathering to happen at sharky's where the losing kickball team will have a chance at redemption
-            through a good old fashioned flip cup game. </p>
-            <br>
-          <!-- <p class="has-text-weight-medium">Location: Edison Community Park, Huntington Beach, CA</p> -->
-
+        <div class="column is-4 is-offset-2 Description" >
+          <div id="description"></div>
+          <div id="attending"></div>          
         </div>
         <div class="column is-4 ">
           <div class="card">
@@ -77,26 +63,9 @@
               </p>
             </header>
             <div class="card-content" id="details">
-              <div class="content">
-                <p class="has-text-weight-medium">Date:</p>
-                <p>
-                  Saturday, April 3rd, 2021<br>
-                  5:00 PM to 7:00 PM
-                </p>
-                <br>
-                <p class="has-text-weight-medium">Location:</p>
-                <p>
-                  Edison Community Park<br>
-                  21377 Magnolia St., Huntington Beach, CA 92646
-                </p>
-              </div>
             </div>
-            <footer class="card-footer">
-              <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Attend?</button>
-              <button class="button is-medium is-fullwidth signBtn" id="modalBtn">Make Comment</button>
-              <!-- <a href="#" class="card-footer-item isGoing">Going?</a>
-    <a href="#" class="card-footer-item isComment">Comment</a> -->
-              <!-- <a href="#" class="card-footer-item isReport">Report</a> -->
+            <footer class="card-footer" id="attendBtn">
+              <button class="button is-medium is-fullwidth signBtn" id="goingBtn">test</button>
             </footer>
           </div>
         </div>
@@ -104,139 +73,38 @@
     </div>
   </section>
 
-  <div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-content">
-      <!-- Any other Bulma elements you want -->
-      <div class="card">
-        <div class="card-content">
-          <div class="commentContent">
-            Post Your Comment Here!!
-            <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-          </div>
-        </div>
-        <footer class="card-footer">
-          <a href="#" class="card-footer-item">Post Comment</a>
-          <!-- <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a> -->
-        </footer>
-      </div>
-    </div>
-    <button class="modal-close is-large" aria-label="close"></button>
-  </div>
-
   <section class="section">
     <div class="container">
       <div class="columns">
         <div class="column is-8 is-offset-2">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title commentHeader">
-                Comments:
-              </p>
+          <div class="box commentHeader">
+            <h1 class="title is-size-4  ">Comments:</h1>
+          </div>
+          <ul id="commentList"></ul>
+          <div id="commentSection">          
+            <div class="field">
+              <label class="label">New Comment</label>
+              <div class="control">
+                <textarea class="textarea is-fullwidth" id="commentContent" rows="5"></textarea>
+              </div>
+            </div>
 
-            </header>
-            <div class="card-content" id="comments">
-              <!-- <div class="content">
-                I can't wait to get back out there! Covid has definitely given me a strong case of kickball itch, see
-                y'all soon!
-                <br>
-                <br>
-                <b>@JayJay21</b>
-                <br>
-                <time datetime="2016-1-1">11:09 PM - 27 March 2021</time>
-              </div> -->
+            <div class="field">
+              <div class="control">
+                <button class="button signBtn" id="makeComment">Post Comment</button>
+              </div>
             </div>
-            <div class="card-content">
-              <!-- <div class="content">
-                Hellllls Yeah! See you crazy kids out there!
-                <br>
-                <br>
-                <b>@KenDaddyCane</b>
-                <br>
-                <time datetime="2016-1-1">11:35 PM - 27 March 2021</time>
-              </div> -->
-            </div>
-            <!-- <footer class="card-footer">
-              <a href="#" class="card-footer-item">Save</a>
-              <a href="#" class="card-footer-item">Edit</a>
-              <a href="#" class="card-footer-item">Delete</a>
-            </footer> -->
           </div>
 
         </div>
-        <!-- <div class="column is-4 ">
-        </div> -->
       </div>
     </div>
   </section>
 
-
-
-
-
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/navBtns.js"></script>
-
-  <script>
-
-    axios.get(`/api/posts/${1}`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-      .then(res => {
-        console.log(res)
-        // document.getElementById('title').innerHTML = `
-        //   <h1 class="title is-1">${posts.title}</h1>
-        //   <h2 class="subtitle is-3">
-        //     <strong>Hosted by: @${posts.username}</strong>
-        //   </h2>
-        // `
-        // document.getElementById('description').innerHTML = `
-        //   <b>Description:</b>
-        //     <p>${posts.description}</p>
-        //   <br>
-        // `
-        // document.getElementById('details').innerHTML = `
-        //   <div class="content">
-        //     <p class="has-text-weight-medium">Date:</p>
-        //     <p>
-        //       ${posts.dateTime}
-        //     </p>
-        //     <br>
-        //     <p class="has-text-weight-medium">Location:</p>
-        //     <p>
-        //       ${posts.location}<br>
-        //     </p>
-        //   </div>
-        // `
-        // const commentElem = document.createElement('div')
-        // commentElem.className = 'content'
-        // commentElem.innerHTML = `
-        //     <b>@${posts.username}</b>
-        //     <br>
-        //     ${posts.text}
-        //     <br>
-        //     <br>
-        //     <time datetime="2016-1-1">${posts.time_posted}</time>
-        // `
-        // document.getElementById('comments').append(commentElem)
-      })
-      .catch(err => console.log(err))
-
-  
-    document.getElementById('goingBtn').addEventListener('click', () => {
-
-    })
-
-    document.getElementById('modalBtn').addEventListener('click', () => {
-
-    })
-
-  </script>
+  <script src="assets/apps/postPage.js"></script>
   
 </body>
 

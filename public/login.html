@@ -18,7 +18,7 @@
     </div>
   </nav>
 
-  <div class="columns is-mobile login-column">
+  <div class="columns login-column">
     <div class="column is-one-third is-offset-one-third">
       <h1 class= "is-size-2 has-text-centered">Login</h1>
     <div class="field">
@@ -41,7 +41,7 @@
         Login
       </button>
     </p>
-    <a href="register.html">New User? Register</a>
+    <a id="newUser">New User? Register</a>
   </div>
   </div>
   </div>
@@ -49,25 +49,6 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script>
-
-      document.getElementById('login').addEventListener('click', event => {
-        event.preventDefault()
-        axios.post('/api/users/login', {
-          username: document.getElementById('username').value,
-          password: document.getElementById('password').value
-        })
-          .then(({ data: token }) => {
-            if (token) {
-              localStorage.setItem('token', token)
-              window.location = '/'
-            } else {
-              alert('Invalid username or password')
-            }
-          })
-          .catch(err => console.error(err))
-      })
-    </script>
+  <script src="assets/apps/logPage.js"></script>
 </body>
 </html>

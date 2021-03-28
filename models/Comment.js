@@ -8,7 +8,7 @@ Comment.init(
   {
     // define columns
     text: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     id: {

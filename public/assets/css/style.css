@@ -4,7 +4,7 @@
   border-color: transparent;
 }
 
-.signBtn:hover, .deetsHeader, .isGoing {
+.signBtn:hover, .isGoing {
   background-color: #ff4c97;
   color: white;
   border-color: transparent;
@@ -16,7 +16,7 @@
   border-color: transparent;
 }
 
-.navbar, .postHeader, .commentHeader, .isComment, #goingBtn {
+.navbar, .postHeader, .commentHeader, .isComment, .deetsHeader {
   background-color: #9be1ff;
 }
 
@@ -46,9 +46,6 @@
   margin-right: 0px;
 }
 
-.is-warning {
-  color: white;
-}
 
 .isReport {
   background-color: red;
@@ -59,9 +56,22 @@
 }
 
 .seeMore {
-  padding: 5px;
-  margin-top: 3px;
-  background-color: #666264;
+  cursor: pointer;
+}
+
+.seeMore:hover {
+  color: rgb(39, 39, 109);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.commentHeader {
+  box-shadow: none;
+}
+
+.pinkTile {
+  background-color: #ff5ca0;
   color: white;
-  border-color: transparent;
 }

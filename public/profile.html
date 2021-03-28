@@ -27,18 +27,14 @@
     </div>
 
     <div id="navContent" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-start" id="navbarLeft">
         <a class="navbar-item navLeft" id="explore">Explore</a>
-        <a class="navbar-item navLeft">Maps</a>
         <a class="navbar-item navLeft" id="profile">Profile</a>
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons" id="navbarRight">
-            <!-- <a class="button signBtn"><strong>Sign up</strong></a>
-            <a class="button is-white">Log in</a> -->
-            <!-- <a class="button signBtn"><strong>Sign out</strong></a> -->
           </div>
         </div>
       </div>
@@ -52,18 +48,12 @@
           <div class="columns userProfile ">
 
             <div class="column is-3 has-text-centered">
-              <p class="has-text-weight-semibold is-size-3">Username</p>
+              <p class="has-text-weight-semibold is-size-3" id="username"></p>
               <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
             </div>
             <div class="column">
-              <p class="has-text-weight-semibold is-size-4">Bio:</p>
-              <div class="block">
-                Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida
-                at
-                eget
-                metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis
-                consectetur
-                purus sit amet fermentum.
+              <p class="has-text-weight-semibold is-size-4" >Bio:</p>
+              <div id="bio" class="block">
               </div>
             </div>
 
@@ -76,15 +66,8 @@
     <div class="container">
       <div class="columns">
         <div class="column is-4 is-offset-2">
-          <nav class="panel has-text-centered">
+          <nav id="title" class="panel has-text-centered">
             <p class="panel-heading postHeader">Posts</p>
-
-            <a class="panel-block ">Post 1: This is a post to test how the panel will look</a>
-            <a class="panel-block ">Post 2: This is a post to test how the panel will look</a>
-            <a class="panel-block ">Post 3: This is a post to test how the panel will look</a>
-            <a class="panel-block ">Post 4: This is a post to test how the panel will look</a>
-            <a class="panel-block ">Post 5: This is a post to test how the panel will look</a>
-            <a class="panel-block ">Post 6: This is a post to test how the panel will look</a>
           </nav>
         </div>
         <div class="column is-4 ">
@@ -145,6 +128,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src= "assets/apps/userPage.js" ></script>
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/makePost.js"></script>
   <script src="assets/apps/navBtns.js"></script>

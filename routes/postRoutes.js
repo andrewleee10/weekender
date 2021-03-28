@@ -1,21 +1,30 @@
 const router = require('express').Router()
-const { Post } = require('../models')
+const { Post, User, Comment } = require('../models')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 
 
 // FIND ALL posts on explore page 
 router.get('/posts', (req, res) => {
-  Post.findAll({ })
+  Post.findAndCountAll({ include: [User, Comment]})
+    .then(posts => res.json(posts))
+    .catch(err => console.log(err))
+})
+// find all post for one user
+router.get('/posts/users', passport.authenticate('jwt'), (req, res) => {
+  Post.findAll({
+    where: {user_id:req.user.id},
+     include: [User, Comment] })
     .then(posts => res.json(posts))
     .catch(err => console.log(err))
 })
 
 
 // FIND ONE specifc post (?)
-router.get('/posts/:id', passport.authenticate('jwt'), (req, res) => {
+router.get('/posts/:id', (req, res) => {
   Post.findOne({
-    where: { id: req.params.id }
+    where: { id: req.params.id },
+    include: [User, Comment]
   })
     .then(post => res.json(post))
     .catch(err => console.log(err))
