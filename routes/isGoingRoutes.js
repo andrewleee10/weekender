@@ -4,7 +4,7 @@ const passport = require('passport')
 
 // GET all comments on posts on explore page
 router.get('/isGoings', (req, res) => {
-  Comment.findAll({})
+  isGoing.findAll({})
     .then(comments => res.json(comments))
     .catch(err => console.log(err))
 })

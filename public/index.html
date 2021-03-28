@@ -185,6 +185,9 @@
     document.getElementById('row2').innerHTML = ''
     document.getElementById('row3').innerHTML = ''
 
+
+    
+
     for(let i = 0; i < 3; i++) {
       document.getElementById('row1').innerHTML += `
       <div class="tile is-parent">
@@ -237,7 +240,6 @@
 
     document.addEventListener('click', event => {
         if (event.target.classList.contains('seeMore')) {
-          console.log('ping')
           window.location = '/post'
         }
 
