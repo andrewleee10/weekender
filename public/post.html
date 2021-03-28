@@ -107,56 +107,21 @@
           <div class="box commentHeader">
             <h1 class="title is-size-4  ">Comments:</h1>
           </div>
-          <ul id="commentList">
-            <!-- <li>
-              <strong class="username">jdoe :</strong>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi pariatur aperiam esse nam, architecto, temporibus eos nostrum atque accusantium consequatur reiciendis hic ut quaerat, quasi nulla? Animi, nihil tenetur.</p>
-              <small class="has-text-weight-light">11:09 PM - 27 March 2021</small>
-              <hr>
-            </li>
-            <li>
-              <strong class="username">janedoe :</strong>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi pariatur aperiam esse nam, architecto,
-                temporibus eos nostrum atque accusantium consequatur reiciendis hic ut quaerat, quasi nulla? Animi, nihil tenetur.</p>
-              <small class="has-text-weight-light">11:09 PM - 27 March 2021</small>
-              <hr>
-            </li>
-            <li>
-              <strong class="username">jamesdoe :</strong>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi pariatur aperiam esse nam, architecto,
-                temporibus eos nostrum atque accusantium consequatur reiciendis hic ut quaerat, quasi nulla? Animi, nihil tenetur.</p>
-              <small class="has-text-weight-light">11:00 PM - 28 March 2021</small>
-              <hr>
-            </li>
-            <li>
-              <strong class="username">jennydoe :</strong>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi pariatur aperiam esse nam, architecto,
-                temporibus eos nostrum atque accusantium consequatur reiciendis hic ut quaerat, quasi nulla? Animi, nihil tenetur.</p>
-              <small class="has-text-weight-light">3:00 PM - 29 March 2021</small>
-              <hr>
-            </li>
-            <li>
-              <strong class="username">doe-si-doe :</strong>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam animi pariatur aperiam esse nam, architecto,
-                temporibus eos nostrum atque accusantium consequatur reiciendis hic ut quaerat, quasi nulla? Animi, nihil tenetur.</p>
-              <small class="has-text-weight-light">3:12 PM - 29 March 2021</small>
-              <hr>
-            </li> -->
-          </ul>
+          <ul id="commentList"></ul>
+          <div id="commentSection">          
+            <div class="field">
+              <label class="label">New Comment</label>
+              <div class="control">
+                <textarea class="textarea is-fullwidth" id="commentContent" rows="5"></textarea>
+              </div>
+            </div>
 
-          <div class="field">
-            <label class="label">New Comment</label>
-            <div class="control">
-              <textarea class="textarea is-fullwidth" id="commentContent" rows="5"></textarea>
+            <div class="field">
+              <div class="control">
+                <button class="button signBtn" id="makeComment">Post Comment</button>
+              </div>
             </div>
           </div>
-
-          <div class="field">
-            <div class="control">
-              <button class="button signBtn" id="makeComment">Post Comment</button>
-            </div>
-          </div>
-
 
         </div>
       </div>
@@ -176,7 +141,6 @@
       }
     })
       .then(({data: posts}) => {
-        console.log(posts)
 
         let postDT = posts.dateTime.split('T')
         let timeValue = timeConvert(postDT[1])
@@ -212,7 +176,6 @@
 
     axios.get(`/api/comments/${postID}`)
       .then(( { data } ) => {
-        console.log(data)
 
         data.forEach(elem => {
           let commentDT = elem.time_posted.split('T')
@@ -220,9 +183,9 @@
 
           document.getElementById('commentList').innerHTML += `
           <li>
-              <strong class="username">${elem.User.username} :</strong>
-              <p>${elem.text}</p>
-              <small class="has-text-weight-light">${timeValue} ${commentDT[0]}</small>
+              <strong class="username"> ${elem.User.username} </strong>
+              <p> ${elem.text}</p>
+              <small class="has-text-weight-light"> ${timeValue} ${commentDT[0]}</small>
               <hr>
             </li>
           `

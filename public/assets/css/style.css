@@ -46,9 +46,9 @@
   margin-right: 0px;
 }
 
-.is-warning {
+/* .is-warning {
   color: white;
-}
+} */
 
 .isReport {
   background-color: red;
@@ -58,13 +58,13 @@
   line-height: 2;
 }
 
-.seeMore {
+/* .seeMore {
   padding: 5px;
   margin-top: 3px;
   background-color: #666264;
   color: white;
   border-color: transparent;
-}
+} */
 
 ul {
   list-style-type: none;
