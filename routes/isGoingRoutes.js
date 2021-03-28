@@ -1,11 +1,26 @@
 const router = require('express').Router()
-const { isGoing } = require('../models')
+const { isGoing, User, Post } = require('../models')
 const passport = require('passport')
 
 // GET all comments on posts on explore page
-router.get('/isGoings', (req, res) => {
-  isGoing.findAll({})
-    .then(comments => res.json(comments))
+router.get('/isGoings/:id', (req, res) => {
+  isGoing.findAll({
+    where: { post_id : req.params.id},
+    include: [User, Post]
+  })
+    .then(going => res.json(going))
+    .catch(err => console.log(err))
+})
+
+router.get('/isGoings/already/:id', passport.authenticate('jwt'), (req, res) => {
+  isGoing.findOne({
+    where: { 
+      user_id : req.user.id,
+      post_id : req.params.id
+    },
+    include: [User, Post]
+  })
+    .then(going => res.json(going))
     .catch(err => console.log(err))
 })
 
