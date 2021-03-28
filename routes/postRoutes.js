@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 
 // FIND ALL posts on explore page 
 router.get('/posts', (req, res) => {
-  Post.findAll({ include: [User, Comment]})
+  Post.findAndCountAll({ include: [User, Comment]})
     .then(posts => res.json(posts))
     .catch(err => console.log(err))
 })
