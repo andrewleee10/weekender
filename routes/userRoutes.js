@@ -30,6 +30,15 @@ router.get('/users/posts', passport.authenticate('jwt'), (req, res) => {
     .catch(err => { console.log(err) })
 })
 
+router.get('/users', passport.authenticate('jwt'), (req, res) => {
+  User.findOne({
+    where: { id: req.user.id },
+    include: [Post, Comment, isGoing]
+  })
+    .then(user => res.json(user))
+    .catch(err => console.log(err))
+})
+
 // User registers
 router.post('/users/register', (req, res) => {
   const { name, email, username, phone, bio } = req.body

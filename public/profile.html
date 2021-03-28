@@ -56,8 +56,8 @@
               <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded">
             </div>
             <div class="column">
-              <p class="has-text-weight-semibold is-size-4" id="bio">Bio:</p>
-              <div class="block">
+              <p class="has-text-weight-semibold is-size-4" >Bio:</p>
+              <div id="bio" class="block">
                 Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida
                 at
                 eget
@@ -139,33 +139,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-  <script>
-    axios.get('/api/posts/users', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-        .then(({data: users}) => {
-          
-          users.forEach(post => {
-            document.getElementById('title').innerHTML += `<a data-post_id="${post.id}" class="panel-block ">${post.title}</a>`
-          });
-
-          console.log(users)
-        })
-          .catch(err => console.log(err)) 
-
-    document.addEventListener('click', event => {
-        if (event.target.classList.contains('panel-block')) {
-          localStorage.setItem('post_id', event.target.dataset.post_id)
-          window.location = '/post'
-        }
-
-      }) 
-  </script>
-
-
+  <script src= "assets/apps/userPage.js" ></script>
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/makePost.js"></script>
   <script src="assets/apps/navBtns.js"></script>
