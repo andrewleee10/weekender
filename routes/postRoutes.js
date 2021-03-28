@@ -10,6 +10,14 @@ router.get('/posts', (req, res) => {
     .then(posts => res.json(posts))
     .catch(err => console.log(err))
 })
+// find all post for one user
+router.get('/posts/users', passport.authenticate('jwt'), (req, res) => {
+  Post.findAll({
+    where: {user_id:req.user.id},
+     include: [User, Comment] })
+    .then(posts => res.json(posts))
+    .catch(err => console.log(err))
+})
 
 
 // FIND ONE specifc post (?)

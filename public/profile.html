@@ -152,7 +152,7 @@
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
-        .then(res => {
+        .then(({data: users}) => {
           console.log(res)
         })
           })       
