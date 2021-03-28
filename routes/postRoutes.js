@@ -13,7 +13,7 @@ router.get('/posts', (req, res) => {
 
 
 // FIND ONE specifc post (?)
-router.get('/posts/:id', passport.authenticate('jwt'), (req, res) => {
+router.get('/posts/:id', (req, res) => {
   Post.findOne({
     where: { id: req.params.id },
     include: [User, Comment]

@@ -19,7 +19,7 @@
   </nav>
 
 
-  <div class="columns is-mobile login-column">
+  <div class="columns login-column">
     <div class="column is-one-third is-offset-one-third">
       <h1 class="is-size-2 has-text-centered">Register</h1>
   <div class="field">
@@ -75,7 +75,7 @@
       <button class="button signBtn" id="register">Submit</button>
     </div>
     <div class="control">
-      <button class="button is-link is-light">Cancel</button>
+      <button class="button is-link is-light" id="cancel">Cancel</button>
     </div>
   </div>
   </div>
@@ -98,6 +98,10 @@
           .then(() => window.location = '/login.html')
           .catch(err => console.error(err))
       })
+
+    document.getElementById('cancel').addEventListener('click', event => {
+      window.location = '/'
+    })
   </script>
 </body>
 </html>

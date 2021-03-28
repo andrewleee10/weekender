@@ -26,9 +26,8 @@
     </div>
 
     <div id="navContent" class="navbar-menu">
-      <div class="navbar-start">
+      <div class="navbar-start" id="navbarLeft">
         <a class="navbar-item navLeft" id="explore">Explore</a>
-        <a class="navbar-item navLeft">Maps</a>
         <a class="navbar-item navLeft" id="profile">Profile</a>
       </div>
 
@@ -109,11 +108,7 @@
 
     let postID = localStorage.getItem('post_id')
 
-    axios.get(`/api/posts/${postID}`, {
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    })
+    axios.get(`/api/posts/${postID}`)
       .then(({data: posts}) => {
 
         let postDT = posts.dateTime.split('T')
@@ -161,32 +156,32 @@
               <p> ${elem.text}</p>
               <small class="has-text-weight-light"> ${timeValue} ${commentDT[0]}</small>
               <hr>
-            </li>
-          `
+            </li>`
         })
-        
-
       })
       .catch(err => console.log(err))
 
-      axios.get(`/api/isGoings/${postID}`)
-        .then(({data}) => {
-          let attendees = ''
 
-          data.forEach(elem => {
-            attendees += `${elem.User.username}, `
-          })
-          document.getElementById('attending').innerHTML = `
-          <h1 class="is-size-5 has-text-weight-semibold">Attendees:</h1>
-          <p>${attendees}</p>
-          ` 
+
+    axios.get(`/api/isGoings/${postID}`)
+      .then(({data}) => {
+        let attendees = ''
+
+        data.forEach(elem => {
+          attendees += `${elem.User.username}, `
         })
-        .catch(err => console.log(err))
+        document.getElementById('attending').innerHTML = `
+        <h1 class="is-size-5 has-text-weight-semibold">Attendees:</h1>
+        <p>${attendees}</p>
+        ` 
+      })
+      .catch(err => console.log(err))
 
+    if (localStorage.getItem('token')) {
       axios.get(`/api/isGoings/already/${postID}`, {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-          }
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
       })
         .then(user => {
           if(user.data === null) {
@@ -198,6 +193,47 @@
           }
         })
         .catch(err => console.log(err))
+
+      document.getElementById('goingBtn').addEventListener('click', () => {
+        let newGoing = {
+          check_going: true,
+          post_id: parseInt(postID)
+        }
+        axios.post('/api/isGoings', newGoing, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then( window.location = '/post')
+          .catch(err => console.log(err))
+      })
+
+      document.getElementById('makeComment').addEventListener('click', () => {
+        let newComment = {
+          text: document.getElementById('commentContent').value,
+          post_id: postID
+        }
+
+        axios.post('/api/comments', newComment, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+          .then(({ data }) => {
+            console.log(data)
+            document.getElementById('commentContent').value = ''
+            window.location = '/post'
+          })
+          .catch(err => console.log(err))
+      })
+    }else {
+      document.getElementById('commentSection').innerHTML = ''
+      document.getElementById('attendBtn').innerHTML = `
+            <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Log in to Attend Event</button>`
+      document.getElementById('goingBtn').addEventListener('click', event => {
+        window.location = '/login'
+      })
+    }
 
     const timeConvert = (justTime) => {
       /////////////////////////////  code taken from https://stackoverflow.com/questions/29206453/best-way-to-convert-military-time-to-standard-time-in-javascript/29206663 
@@ -225,43 +261,8 @@
       timeValue += (hours >= 12) ? " P.M." : " A.M."  // get AM/PM
 
       return timeValue
-        /////////////////////////////
+      /////////////////////////////
     }
-
-
-    document.getElementById('goingBtn').addEventListener('click', () => {
-      let newGoing = {
-        check_going: true,
-        post_id: parseInt(postID)
-      }
-      axios.post('/api/isGoings', newGoing, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-        .then( window.location = '/post')
-        .catch(err => console.log(err))
-    })
-
-    document.getElementById('makeComment').addEventListener('click', () => {
-      let newComment = {
-        text: document.getElementById('commentContent').value,
-        post_id: postID
-      }
-
-      axios.post('/api/comments', newComment, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      })
-        .then(({ data }) => {
-          console.log(data)
-          document.getElementById('commentContent').value = ''
-          window.location = '/post'
-        })
-        .catch(err => console.log(err))
-    })
-
   </script>
   
 </body>
