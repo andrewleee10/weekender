@@ -34,9 +34,6 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons" id="navbarRight">
-            <!-- <a class="button signBtn"><strong>Sign up</strong></a>
-            <a class="button is-white">Log in</a>
-            <a class="button signBtn"><strong>Sign out</strong></a> -->
           </div>
         </div>
       </div>
@@ -49,70 +46,10 @@
     </div>
   </section>
 
-
-  <!-- Footer  -->
-
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="assets/apps/hamburger.js"></script>
   <script src="assets/apps/navBtns.js"></script>
-  <script>
-    const tileColors = ['is-primary', 'is-link', 'is-info', 'is-success', 'is-warning', 'is-danger']
-
-    axios.get('/api/posts')
-      .then(({ data }) => {
-
-        let rowCount = 1
-        let rowContent = ''
-        let postArray = data.rows
-        let postCount = 1
-        let postLength = data.count - 1
-
-        postArray.forEach(elem => {
-          let elemDate = elem.dateTime.split('T')
-
-          rowContent += `
-          <div class="tile is-parent">
-            <article class="tile is-child box notification ${tileColors[Math.floor(Math.random() * 6)]} ">
-              <p class="title">${elem.title}</p>
-              <p class="subtitle">${elem.User.username}</p>
-              <div class="content ">
-                <p>Location: ${elem.location}</p>
-                <p>Date: ${elemDate[0]}</p>
-                <div class="tileBottom">
-                  <button class="button is-light seeMore is-fullwidth" data-post_id=${elem.id}>See Full Details</button>
-                </div>
-              </div>
-            </article>
-          </div>
-          `
-          rowCount++
-          
-
-          if(rowCount > 3 || postCount === postLength) {
-            document.getElementById('allPosts').innerHTML += `
-            <div class="tile is-ancestor">
-              ${rowContent}
-            </div>
-            `
-            rowCount = 1
-            rowContent = ''
-          }
-
-          postCount++
-        })
-
-      })
-      .catch(err => console.log(err))
-
-    document.addEventListener('click', event => {
-        if (event.target.classList.contains('seeMore')) {
-          localStorage.setItem('post_id', event.target.dataset.post_id)
-          window.location = '/post'
-        }
-
-      })
-
-  </script>
+  <script src="assets/apps/indexPage.js"></script>
 </body>
 
 </html>

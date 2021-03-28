@@ -46,9 +46,6 @@
   margin-right: 0px;
 }
 
-/* .is-warning {
-  color: white;
-} */
 
 .isReport {
   background-color: red;
@@ -58,14 +55,13 @@
   line-height: 2;
 }
 
-/* .seeMore {
-  
-  padding: 5px;
-  margin-top: 3px;
-  background-color: #666264;
-  color: white;
-  border-color: transparent;
-} */
+.seeMore {
+  cursor: pointer;
+}
+
+.seeMore:hover {
+  color: rgb(39, 39, 109);
+}
 
 ul {
   list-style-type: none;
@@ -75,6 +71,7 @@ ul {
   box-shadow: none;
 }
 
-.tileBottom {
-  margin-top: auto;
+.pinkTile {
+  background-color: #ff5ca0;
+  color: white;
 }

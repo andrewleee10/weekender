@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { isGoing, User, Post } = require('../models')
 const passport = require('passport')
 
-// GET all comments on posts on explore page
+// GET all users on posts on post page
 router.get('/isGoings/:id', (req, res) => {
   isGoing.findAll({
     where: { post_id : req.params.id},
@@ -31,7 +31,7 @@ router.get('/isGoings/already/:id', passport.authenticate('jwt'), (req, res) => 
 //     .catch(err => console.log(err))
 // })
 
-// POST one Comment
+// POST one isGoing
 router.post('/isGoings', passport.authenticate('jwt'), (req, res) => {
   isGoing.create({
     check_going: req.body.check_going,
@@ -42,7 +42,7 @@ router.post('/isGoings', passport.authenticate('jwt'), (req, res) => {
     .catch(err => console.log(err))
 })
 
-// PUT one Comment
+// PUT one isGoing
 router.put('/isGoings/:id', passport.authenticate('jwt'), (req, res) => {
   isGoing.update(req.body, { where: { id: req.params.id } })
     .then(() => res.sendStatus(200))
