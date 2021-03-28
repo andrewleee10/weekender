@@ -12,9 +12,12 @@ router.get('/isGoings/:id', (req, res) => {
     .catch(err => console.log(err))
 })
 
-router.get('/isGoings/already', passport.authenticate('jwt'), (req, res) => {
+router.get('/isGoings/already/:id', passport.authenticate('jwt'), (req, res) => {
   isGoing.findOne({
-    where: { user_id : req.user.id},
+    where: { 
+      user_id : req.user.id,
+      post_id : req.params.id
+    },
     include: [User, Post]
   })
     .then(going => res.json(going))

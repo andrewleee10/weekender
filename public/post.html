@@ -183,13 +183,13 @@
         })
         .catch(err => console.log(err))
 
-      axios.get('/api/isGoings/already', {
+      axios.get(`/api/isGoings/already/${postID}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
       })
         .then(user => {
-          if(user === null) {
+          if(user.data === null) {
             document.getElementById('attendBtn').innerHTML =`
             <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Going</button>`
           }else {
