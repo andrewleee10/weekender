@@ -46,28 +46,15 @@
 
   <section class="section">
     <div class="container has-text-centered" id="title">
-      <!-- <img src="./assets/images/weekndrLogo.png" alt="Placeholder Image" class="userProfileImage is-rounded"> -->
-      <!-- <p class="is-bold">Saturday, April 3rd, 2021</p> -->
-      <h1 class="title is-1">Kick Ball Game!!!</h1>
-      <h2 class="subtitle is-3">
-        <strong>Hosted by: @DoubleJayandtheJayTones</strong>
-      </h2>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-4 is-offset-2 Description" id="description">
-          <h1 class="is-3">Description:</h1>
-          <p>Even if you haven't played kickball since your 7th grade PE class, come on down for some Sunday
-            Funday Fun at the Edison Park in Huntington BEach. We'll get going at 3pm and if you do decide to
-            bring any adult beverages for the game, please make wise decisions with your vessel choices. Post
-            game gathering to happen at sharky's where the losing kickball team will have a chance at redemption
-            through a good old fashioned flip cup game. </p>
-            <br>
-          <!-- <p class="has-text-weight-medium">Location: Edison Community Park, Huntington Beach, CA</p> -->
-
+        <div class="column is-4 is-offset-2 Description" >
+          <div id="description"></div>
+          <div id="attending"></div>          
         </div>
         <div class="column is-4 ">
           <div class="card">
@@ -77,21 +64,8 @@
               </p>
             </header>
             <div class="card-content" id="details">
-              <div class="content">
-                <p class="has-text-weight-medium">Date:</p>
-                <p>
-                  Saturday, April 3rd, 2021<br>
-                  5:00 PM to 7:00 PM
-                </p>
-                <br>
-                <p class="has-text-weight-medium">Location:</p>
-                <p>
-                  Edison Community Park<br>
-                  21377 Magnolia St., Huntington Beach, CA 92646
-                </p>
-              </div>
             </div>
-            <footer class="card-footer">
+            <footer class="card-footer" id="attendBtn">
               <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Going</button>
             </footer>
           </div>
@@ -133,7 +107,7 @@
   <script src="assets/apps/navBtns.js"></script>
   <script>
 
-    let postID = 1
+    let postID = localStorage.getItem('post_id')
 
     axios.get(`/api/posts/${postID}`, {
       headers: {
@@ -195,7 +169,36 @@
       })
       .catch(err => console.log(err))
 
-    
+      axios.get(`/api/isGoings/${postID}`)
+        .then(({data}) => {
+          let attendees = ''
+
+          data.forEach(elem => {
+            attendees += `${elem.User.username}, `
+          })
+          document.getElementById('attending').innerHTML = `
+          <h1 class="is-size-5 has-text-weight-semibold">Attendees:</h1>
+          <p>${attendees}</p>
+          ` 
+        })
+        .catch(err => console.log(err))
+
+      axios.get('/api/isGoings/already', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+      })
+        .then(user => {
+          if(user === null) {
+            document.getElementById('attendBtn').innerHTML =`
+            <button class="button is-medium is-fullwidth signBtn" id="goingBtn">Going</button>`
+          }else {
+            document.getElementById('attendBtn').innerHTML = `
+            <button class="button is-medium is-fullwidth is-success" id="goingBtn" disabled>Attending</button>`
+          }
+        })
+        .catch(err => console.log(err))
+
     const timeConvert = (justTime) => {
       /////////////////////////////  code taken from https://stackoverflow.com/questions/29206453/best-way-to-convert-military-time-to-standard-time-in-javascript/29206663 
 
@@ -227,7 +230,17 @@
 
 
     document.getElementById('goingBtn').addEventListener('click', () => {
-
+      let newGoing = {
+        check_going: true,
+        post_id: parseInt(postID)
+      }
+      axios.post('/api/isGoings', newGoing, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+        .then( window.location = '/post')
+        .catch(err => console.log(err))
     })
 
     document.getElementById('makeComment').addEventListener('click', () => {

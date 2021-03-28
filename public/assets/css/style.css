@@ -59,6 +59,7 @@
 }
 
 /* .seeMore {
+  
   padding: 5px;
   margin-top: 3px;
   background-color: #666264;
@@ -72,4 +73,8 @@ ul {
 
 .commentHeader {
   box-shadow: none;
+}
+
+.tileContent {
+  margin-top: auto;
 }
