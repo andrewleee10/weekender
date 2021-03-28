@@ -1,10 +1,13 @@
 const router = require('express').Router()
-const { Comment } = require('../models')
+const { Comment, Post, User } = require('../models')
 const passport = require('passport')
 
-// GET all comments on posts on explore page
-router.get('/comments', (req, res) => {
-  Comment.findAll({ })
+// GET all comments on posts on post page
+router.get('/comments/:id', (req, res) => {
+  Comment.findAll({ 
+    where: { post_id: req.params.id },
+    include: User
+  })
     .then(comments => res.json(comments))
     .catch(err => console.log(err))
 })

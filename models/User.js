@@ -11,7 +11,7 @@ const User = pls.defineUser(sequelize, {
   name: DataTypes.STRING,
   email: DataTypes.STRING,
   phone: DataTypes.STRING,
-  bio: DataTypes.STRING
+  bio: DataTypes.TEXT
 })
 
 module.exports = User
