@@ -1,6 +1,8 @@
-# Weekendr
+# <h1 align="center">Weekendr</p>
 
-![Weekndr](./public/assets/images/weekndrLogo.png)
+<p align="center">
+  <img src="./public/assets/images/weekndrLogo.png">
+</p>
 
 ## Description
 
